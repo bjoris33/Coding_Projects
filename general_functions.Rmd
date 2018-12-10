@@ -1,0 +1,22 @@
+## Basic scripts and command line functions for tools being used
+
+# Accessing the bash profile
+nano ~/.bash_profile
+
+# Trimmomatic
+* http://www.usadellab.org/cms/?page=trimmomatic
+java -jar trimmomatic-0.35.jar -threads 20 PE -phred33 input_forward.fq.gz input_reverse.fq.gz output_forward_paired.fq.gz output_forward_unpaired.fq.gz CROP: 150
+
+# FastQC
+* invoke location of program, then location of files, -t for number of threads, and -o for where you want the output
+/Volumes/data/bin/FastQC/fastqc /Volumes/data/bjoris/ -t 1 -o .
+
+# Spades
+nohup /Volumes/data/bin/spades.py -o /Volumes/data/bjoris -1 /Volumes/data/bjoris/file.fastq -2 /Volumes/data/bjoris/file.fastq --careful &
+
+# Prokka
+PROKKA="/Users/Shared/bin/prokka-1.12/bin/prokka"
+nohup $PROK assembled_sequences_7135.fasta --force --prefix 7135 --centre 1 --compliant &
+
+# SRA fastq-dump regex in atom
+https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=fastq-dump
