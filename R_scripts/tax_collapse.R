@@ -1,7 +1,10 @@
+# problem: ASV tables created by DADA2 say that every bacteria in a given sample is completely unique compared to the other samples (i.e. zeros in every sample but one)
+# solution: get unique taxonomic assignments and collapse into single row
+# input: count table with column with taxonomic information named 'taxonomy'
+# generalizable
 seqtab <- read.table('seqtab.txt')
 collapsetab <- data.frame()
 for (uniques in unique(seqtab$taxonomy)) {
-  #new <- data.frame(seqtab[grep(uniques, seqtab$taxonomy),])
   new <- data.frame(seqtab[which(seqtab$taxonomy == uniques),])
   sumtab <- data.frame()
   sumcol <- as.numeric()
@@ -10,7 +13,6 @@ for (uniques in unique(seqtab$taxonomy)) {
   }
   sumtab <- t(data.frame(sumcol))
   sumtab <- data.frame(sumtab, uniques)
-  #collapsetab <- rbind(collapsetab, new)
   collapsetab <- rbind(collapsetab, sumtab)
 }
 collapsetab <- collapsetab[,-1]
