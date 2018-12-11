@@ -5,6 +5,10 @@ This repository was created to house miscellaneous scripts that I have written d
 
 # Table of Contents
 general_functions.Rmd - a document for command line functions used to call tools on the server or locally (read the manuals for more information)
+
+## Python_scripts
+* ena_meta.py - a script for fetching metadata information from sample XML file on ENA
+
 ## R_scripts
 * pca_sep_loop.R - a script for separating features based on the PCA values
 * tax_collapse.R - a script for taking all the rows for a unique taxonomic assignment in a count table and collapsing them into a single row
