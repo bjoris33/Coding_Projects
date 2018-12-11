@@ -1,5 +1,5 @@
 # Script for fetching SRR accession and metadata keys from sample XML files on the ena
-# need a file containing the SRS accessions beforehand 
+# need a file containing the SRS accessions beforehand
 
 import xml.etree.ElementTree as ET
 import urllib.request, urllib.parse, urllib.error
@@ -13,7 +13,7 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 # opens xml file and finds the metadata id and the SRR accession, and then adds them to a dictionary
-metalist = {}
+metalist = ''
 for acc in acclist:
     url = 'https://www.ebi.ac.uk/ena/data/view/' + acc + '&display=xml'
     html = urllib.request.urlopen(url, context=ctx).read()
@@ -25,8 +25,7 @@ for acc in acclist:
         temp = item.find('ID').text
         if 'SRR' in temp:
             SRR = temp
-    metalist[metaid] = SRR
-#print(metalist)
-# dictionaries cannot print to files, so this step is needed
-with open('metapairs.txt', 'w') as file:
-     file.write(json.dumps(metalist))
+    metalist = metalist + metaid + '\t' + SRR + '\n'
+print(metalist)
+fout = open('metapairs.txt', 'w')
+fout.write(metalist)
