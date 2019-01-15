@@ -5,7 +5,7 @@ nano ~/.bash_profile
 
 # Trimmomatic
 * http://www.usadellab.org/cms/?page=trimmomatic
-java -jar trimmomatic-0.35.jar -threads 20 PE -phred33 input_forward.fq.gz input_reverse.fq.gz output_forward_paired.fq.gz output_forward_unpaired.fq.gz CROP: 150
+java -jar /Volumes/data/bin/Trimmomatic-0.36/trimmomatic-0.35.jar -threads 10 PE -phred33 input_forward.fq.gz input_reverse.fq.gz output_forward_paired.fq.gz output_forward_unpaired.fq.gz CROP: 150
 
 # FastQC
 * invoke location of program, then location of files, -t for number of threads, and -o for where you want the output
@@ -16,7 +16,12 @@ nohup /Volumes/data/bin/spades.py -o /Volumes/data/bjoris -1 /Volumes/data/bjori
 
 # Prokka
 PROKKA="/Users/Shared/bin/prokka-1.12/bin/prokka"
-nohup $PROK assembled_sequences_7135.fasta --force --prefix 7135 --centre 1 --compliant &
+nohup $PROKKA assembled_sequences_7135.fasta --force --prefix 7135 --centre 1 --compliant &
 
 # SRA fastq-dump regex in atom
 https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=fastq-dump
+
+# Ignore these, just me learning awk 
+awk 'NR==FNR{hash[$1];next} $1 in hash{print; nr[NR+1]; nr[NR+2]; nr[NR+3]; next} NR in nr' test1.fastq test2.fastq > subset_reads.fastq
+awk '/^@SRR/ { print $0 }' test1.fastq test2.fastq > subset_reads.fastq
+awk '/^@SRR.+\// {fhead = substr($0, 1, length($0) - 1) }{print fhead}' test1.fastq test2.fastq > subset_reads.fastq
