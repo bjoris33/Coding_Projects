@@ -8,6 +8,7 @@ general_functions.Rmd - a document for command line functions used to call tools
 
 ## Python_scripts
 * ena_meta.py - a script for fetching metadata information from sample XML file on ENA
+* accession_matching.py - a script for building assembly download links for ENA from list of samples of raw reads
 
 ## R_scripts
 * pca_sep_loop.R - a script for separating features based on the PCA values
@@ -16,6 +17,7 @@ general_functions.Rmd - a document for command line functions used to call tools
 
 ## Bash_Scripts
 * meta_pipe.sh - a script for pulling metagenomic datasets from online, unzipping , deduping, re-merging, and trimming them
+* assembly_dl.sh - shell loop for downloading assemblies from urls created by accession_matching.py 
 
 ## Perl_Scripts
 * merge_filtered_fastq.pl - written by GG - a script for re-merging files following dedupe (dedupe creates mismatched files)
