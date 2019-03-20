@@ -9,6 +9,7 @@ general_functions.Rmd - a document for command line functions used to call tools
 ## Python_scripts
 * ena_meta.py - a script for fetching metadata information from sample XML file on ENA
 * accession_matching.py - a script for building assembly download links for ENA from list of samples of raw reads
+* wgs_links.py - python script for generating a text file of download links to 
 
 ## R_scripts
 * pca_sep_loop.R - a script for separating features based on the PCA values
@@ -17,7 +18,16 @@ general_functions.Rmd - a document for command line functions used to call tools
 
 ## Bash_Scripts
 * meta_pipe.sh - a script for pulling metagenomic datasets from online, unzipping , deduping, re-merging, and trimming them
-* assembly_dl.sh - shell loop for downloading assemblies from urls created by accession_matching.py 
+* assembly_dl.sh - shell loop for downloading assemblies from urls created by accession_matching.py
+* bowtie2_execute.sh - shell script for default execution of bowtie2
+* bt2_gutdb.sh - shell script for building bowtie2 index
+* count-fh.sh - shell script for counting fasta headers in a list of files
+* fh_fhgr.sh - shell script for editing fasta headers
+* fh_fix.sh - replaces spaces in fasta headers and changes file extensions
+* fh_umgs.sh - same idea as fh_fhgr.sh
+* meta_pipe_small.sh - smaller version of meta_pipe.sh (in terms of number of downloads)
+* small_dl.sh - just a wget loop for some ENA data
+* wgs_links.py - wget loop for downloading genomes
 
 ## Perl_Scripts
 * merge_filtered_fastq.pl - written by GG - a script for re-merging files following dedupe (dedupe creates mismatched files)
