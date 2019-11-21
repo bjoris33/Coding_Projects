@@ -21,7 +21,10 @@ nohup $PROKKA assembled_sequences_7135.fasta --force --prefix 7135 --centre 1 --
 # SRA fastq-dump regex in atom
 https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=fastq-dump
 
-# Ignore these, just me learning awk 
+# Ignore these, just me learning awk
 awk 'NR==FNR{hash[$1];next} $1 in hash{print; nr[NR+1]; nr[NR+2]; nr[NR+3]; next} NR in nr' test1.fastq test2.fastq > subset_reads.fastq
 awk '/^@SRR/ { print $0 }' test1.fastq test2.fastq > subset_reads.fastq
 awk '/^@SRR.+\// {fhead = substr($0, 1, length($0) - 1) }{print fhead}' test1.fastq test2.fastq > subset_reads.fastq
+
+# Changing group permissions on the server (example)
+sudo chown -R tbrowne:lab .
