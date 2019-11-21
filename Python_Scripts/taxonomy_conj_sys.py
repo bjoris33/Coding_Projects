@@ -47,7 +47,7 @@ with open("SAMPLES_MERGED-SPLITS.fa") as fafh:
             headerlist.append(line[1:].rsplit("_",2)[0].strip())
 # output data to tab-sep text file for import into anvio
 with open("items_new.txt","a") as newfh:
-    newfh.write("item_name"+"\t"+"phylum"+"\t"+"clss"+"\n")
+    newfh.write("item_name"+"\t"+"phylum"+"\t"+"class"+"\n")
 for i in headerlist:
     with open("items_new.txt","a") as newfh:
         newfh.write(i+"_split_00001"+"\t"+phylum[fastaHeader[anvioHeader[i]]]+"\t"+clss[fastaHeader[anvioHeader[i]]]+"\n")
