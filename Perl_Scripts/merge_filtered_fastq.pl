@@ -66,8 +66,8 @@ close IN;
 my @keys = keys(%ids);
 
 
-open (OUT1, "> fastq1.fastq") or die;
-open (OUT2, "> fastq2.fastq") or die;
+open (OUT1, "> $ARGV[2]") or die;
+open (OUT2, "> $ARGV[3]") or die;
 
 foreach(@keys){
     if ($ids{$_} > 1){
